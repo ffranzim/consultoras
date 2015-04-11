@@ -1,0 +1,63 @@
+<ui:composition template="WEB-INF/layout/layoutPadrao.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:define name="corpo">
+
+		<h:body>
+
+			<h1 align="left">Produto</h1>
+			<p:growl id="messages" showIcon="false" autoUpdate="true" life="6800" />
+
+			<h:form id="idForm">
+
+				<h:panelGrid columns="2">
+
+					<h:outputLabel for="codigo" value="Referência: *" />
+					<p:inputText id="codigo" value="#{produtoMB.produto.codigo}" size="60" required="true" />
+
+
+					<h:outputLabel for="nome" value="Nome: *" />
+					<p:inputText id="nome" value="#{produtoMB.produto.nome}" size="60" required="true" />
+
+
+					<h:outputLabel for="selectMarca" value="Marca: " />
+					<p:selectOneMenu id="selectMarca" label="marca" value="#{produtoMB.marca.nome}" required="true" converter="entityConverter">
+						<f:selectItem itemLabel="-- Selecione --" noSelectionOption="true" />
+						<f:selectItems value="#{marcaMB.marcas}" var="marca" itemValue="#{marca}" itemLabel="#{marca.nome}" />
+					</p:selectOneMenu>
+					
+					<h:outputLabel for="categoria" value="Categoria: " required="true" />
+					<p:selectOneMenu id="categoria" value="#{produtoMB.produto.categoria}">
+						<f:selectItem itemLabel="Selecione" itemValue="" />
+						<f:selectItems value="#{produtoMB.categorias}" var="categoria" itemLabel="#{categoria.nome}"
+							itemValue="#{categoria}" />
+					</p:selectOneMenu>
+
+
+
+
+					<h:outputLabel for="qtdUnidade" value="Quantidade da Unidade em Gramas ou ml: *" />
+					<p:inputText id="qtdUnidade" value="#{produtoMB.produto.qtdUnidade}" size="60" required="true" />
+
+
+					<h:outputLabel for="valor" value="Valor: *" />
+					<p:inputText id="valor" value="#{produtoMB.produto.valor}" size="60" required="true" />
+
+
+					<h:outputLabel for="dtVencimento" value="Data de Vencimento: *" />
+					<p:calendar id="dtVencimento" value="#{produtoMB.produto.dtVencimento}" pattern="dd/MM/yyyy" showOn="button"
+						required="true" />
+
+
+					<h:outputLabel for="descricao" value="Descrição: *" />
+					<p:inputTextarea id="descricao" value="#{produtoMB.produto.descricao}" rows="8" cols="57" required="true" />
+
+				</h:panelGrid>
+
+				<p:commandButton value="Salvar" action="#{produtoMB.salvar}" update="idForm, :messages" />
+
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>
