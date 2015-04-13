@@ -3,8 +3,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 	<ui:define name="corpo">
 
@@ -12,22 +11,15 @@
 		<p:messages id="messages" />
 
 		<h:form>
+			<h:panelGrid columns="2" style="margin-bottom:10px">
+				<h:outputLabel for="nome" value="Nome: *" />
+				<p:inputText id="nome" value="#{marcaMB.novaMarca.nome}" size="60">
+					<p:message for="nome" />
+				</p:inputText>
+			</h:panelGrid>
 
-			<f:validateBean>
-
-				<h:panelGrid columns="2" style="margin-bottom:10px">
-					<h:outputLabel for="nome" value="Nome: *" />
-					<p:inputText id="nome" value="#{marcaFormController.marca.nome}"
-						size="60">
-						<p:message for="nome" />
-					</p:inputText>
-				</h:panelGrid>
-
-				<p:commandButton action="#{marcaFormController.salvar}"
-					value="Salvar" ajax="false" />
-
-			</f:validateBean>
-
+			<p:commandButton action="#{marcaMB.salvar}" value="Salvar"
+				ajax="false" />
 		</h:form>
 
 	</ui:define>

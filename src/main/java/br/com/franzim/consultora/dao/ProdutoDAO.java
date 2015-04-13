@@ -11,11 +11,12 @@ import br.com.franzim.consultora.entity.Produto;
 import br.com.franzim.consultora.persistence.JpaUtil;
 
 public class ProdutoDAO {
-	
+
 	EntityManager em = JpaUtil.getEntityManager();
 
 	public List<Produto> getProdutos() {
-		return em.createNamedQuery("Produto.listarTodos", Produto.class).getResultList();
+		return em.createNamedQuery("Produto.listarTodos", Produto.class)
+				.getResultList();
 	}
 
 	public void salvar(Produto produto) {
@@ -23,7 +24,6 @@ public class ProdutoDAO {
 		tx.begin();
 		em.persist(produto);
 		tx.commit();
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Produto salvo com sucesso!", null));
 	}
 
 }

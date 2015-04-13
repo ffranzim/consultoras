@@ -1,15 +1,24 @@
-<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"  
-      xmlns:h="http://java.sun.com/jsf/html"  
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:c="http://java.sun.com/jsp/jstl/core">
-	
-	Topo - ${mainController.usuarioLogado.nome} 
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
 
-	<h:form>
-	<p:commandLink value="Sair" action="#{loginController.sair}"/>
-	</h:form>
-	
+	<h:body>
+		<p:layout>
+			<p:tabMenu activeIndex="#{param.i}">
+				<p:menuitem value="Categoria" outcome="categoria.xhtml"
+					icon="ui-icon-star">
+					<f:param name="i" value="0" />
+				</p:menuitem>
+				<p:menuitem value="Marca" outcome="marca.xhtml"
+					icon="ui-icon-star">
+					<f:param name="i" value="0" />
+				</p:menuitem>
+			</p:tabMenu>
+		</p:layout>
+	</h:body>
+
 </h:panelGroup>
 

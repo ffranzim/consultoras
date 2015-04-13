@@ -35,6 +35,7 @@ public class Usuario implements Serializable {
 
 	private String nome;
 	private String email;
+	private String celular;
 	private String username;
 	@Setter(value=AccessLevel.NONE)
 	private String senha;
