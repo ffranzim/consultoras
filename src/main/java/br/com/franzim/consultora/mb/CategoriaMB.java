@@ -1,5 +1,6 @@
 package br.com.franzim.consultora.mb;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -15,14 +16,19 @@ import br.com.franzim.consultora.entity.Categoria;
 
 @Data
 @ManagedBean
-public class CategoriaMB {
+public class CategoriaMB implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	CategoriaDAO dao = new CategoriaDAO();
 	Long id;
 
+	private List<Categoria> filteredCategoria;
+	
 	@Setter(value = AccessLevel.NONE)
 	private List<Categoria> categorias;
 	private Categoria novaCategoria = new Categoria();
+	
 
 	@PostConstruct
 	public void carregaCategorias() {
@@ -44,5 +50,4 @@ public class CategoriaMB {
 				new FacesMessage(FacesMessage.SEVERITY_INFO,
 						"Categoria excluida com sucesso!", null));
 	}
-
 }

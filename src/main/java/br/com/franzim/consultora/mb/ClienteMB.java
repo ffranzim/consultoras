@@ -23,5 +23,4 @@ public class ClienteMB {
 				new FacesMessage(FacesMessage.SEVERITY_INFO,
 						"Cliente salvo com sucesso!", null));
 	}
-
 }

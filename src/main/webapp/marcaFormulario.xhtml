@@ -13,7 +13,7 @@
 		<h:form>
 			<h:panelGrid columns="2" style="margin-bottom:10px">
 				<h:outputLabel for="nome" value="Nome: *" />
-				<p:inputText id="nome" value="#{marcaMB.novaMarca.nome}" size="60">
+				<p:inputText id="nome" value="#{marcaMB.novaMarca.nome}" size="60" required="true">
 					<p:message for="nome" />
 				</p:inputText>
 			</h:panelGrid>

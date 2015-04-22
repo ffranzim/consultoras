@@ -41,4 +41,8 @@ public class Consultora implements Serializable {
 	private Date dtEntrada;
 
 	private Date dtNascimento;
+	
+	/*public Consultora(){
+		
+	}*/
 }

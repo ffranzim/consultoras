@@ -1,0 +1,43 @@
+<ui:composition template="WEB-INF/layout/layoutPadrao.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:define name="corpo">
+		<h:body>
+			<h1 align="left">Consultora</h1>
+			<p:growl id="messages" showIcon="false" autoUpdate="true" life="6800" />
+
+			<h:form id="idForm">
+
+				<h:panelGrid columns="2">
+
+					<h:outputLabel for="nome" value="Consultora: *" />
+					<p:inputText id="nome" value="#{consultoraMB.novaConsultora.nome}"
+						size="60" required="true" />
+
+					<h:outputLabel for="email" value="Email: *" />
+					<p:inputText id="email"
+						value="#{consultoraMB.novaConsultora.email}" size="60"
+						required="true" />
+
+					<h:outputLabel for="celular" value="Celular: *" />
+					<p:inputText id="celular"
+						value="#{consultoraMB.novaConsultora.celular}" size="60"
+						required="true" />
+
+					<h:outputLabel for="endereco" value="Endereco: *" />
+					<p:inputText id="endereco"
+						value="#{consultoraMB.novaConsultora.endereco}" size="60"
+						required="true" />
+
+				</h:panelGrid>
+
+				<p:commandButton value="Salvar" action="#{consultoraMB.salvar}" />
+
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>

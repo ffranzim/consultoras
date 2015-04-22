@@ -7,41 +7,26 @@
 
 	<ui:define name="corpo">
 
-		<h1>Pagina de Categorias!</h1>
-
 		<h:form>
 			<p:button outcome="categoriaFormulario.xhtml" value="Nova Categoria" />
 		</h:form>
 
 		<h:form id="frmTabela">
 
-			<p:dataTable id="tabela" value="#{categoriaMB.categorias}"
-				var="categoria">
+			<p:dataTable  widgetVar="tabela" value="#{categoriaMB.categorias}"
+				var="categoria" filteredValue="#{categoriaMB.categorias}">
 
-				<p:column>
-					<f:facet name="header">Nome</f:facet>
-					#{categoria.nome}  
+				<f:facet name="header">
+					<p:outputPanel>
+						<h:outputText value="Busca:" />
+						<p:inputText id="globalFilter" onkeyup="PF('tabela').filter()"
+							style="width:150px" placeholder="Digite a Categoria" />
+					</p:outputPanel>
+				</f:facet>
+
+				<p:column filterBy="#{categoria.nome}" headerText="Produto" filterMatchMode="contains">
+					   <h:outputText value="#{categoria.nome}" />  
 			    </p:column>
-
-
-				<p:column style="width: 80px;">
-					<f:facet name="header">Ações</f:facet>
-					<p:button outcome="categoriaFormulario.xhtml" icon="ui-icon-pencil"
-						title="Editar Categoria">
-						<f:param name="id" value="#{categoria.id}" />
-					</p:button>
-
-
-					<p:spacer width="10" />
-					<p:commandButton
-						onclick="return confirm('Tem certeza que deseja excluir?')"
-						icon="ui-icon-trash" title="Excluir Categoria" ajax="true"
-						update=":frmTabela" action="#{categoriaMB.excluir}">
-						<f:setPropertyActionListener target="#{categoriaMB.id}"
-							value="#{categoria.id}" />
-					</p:commandButton>
-
-				</p:column>
 
 			</p:dataTable>
 

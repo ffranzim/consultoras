@@ -15,8 +15,11 @@ public class PersistidorUsuario {
 
 		EntityManager em = JpaUtil.getEntityManager();
 
+		
 		 incluirUsuario(em);
 		 listaUsuarios(em);
+		 
+		 //comentario p\ commit
 //		buscaUsuarioId(em, 1L);
 //		buscaUsuarioIdOutroJeito(em, 2L);
 
