@@ -21,10 +21,7 @@ public class CategoriaMB implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	CategoriaDAO dao = new CategoriaDAO();
-	Long id;
-
-	private List<Categoria> filteredCategoria;
-	
+		
 	@Setter(value = AccessLevel.NONE)
 	private List<Categoria> categorias;
 	private Categoria novaCategoria = new Categoria();

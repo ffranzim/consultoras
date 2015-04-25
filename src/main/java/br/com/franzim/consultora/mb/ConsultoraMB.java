@@ -21,8 +21,7 @@ public class ConsultoraMB implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	ConsultoraDAO dao = new ConsultoraDAO();
-	Long id;
-
+	
 	@Setter(value = AccessLevel.NONE)
 	private List<Consultora> consultoras;
 	private Consultora novaConsultora = new Consultora();
@@ -46,6 +45,6 @@ public class ConsultoraMB implements Serializable {
 		FacesContext.getCurrentInstance().addMessage(
 				null,
 				new FacesMessage(FacesMessage.SEVERITY_INFO,
-						"Categoria excluida com sucesso!", null));
+						"Consultora excluida com sucesso!", null));
 	}
 }

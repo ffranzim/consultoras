@@ -9,7 +9,7 @@
 		<h:form>
 			<p:button outcome="produtoFormulario.xhtml" value="Novo Produto" />
 		</h:form>
-		
+
 		<h:form id="frmTabela">
 			<p:dataTable id="tabela" value="#{produtoMB.produtos}" var="produto">
 				<p:column>
@@ -46,7 +46,28 @@
 			    </p:column>
 				<p:column>
 					<f:facet name="header">Quantidade</f:facet>
-
+				</p:column>
+				<p:column style="width: 80px;">
+					<f:facet name="header">Ações</f:facet>
+					<p:button outcome="produtoFormulario.xhtml" icon="ui-icon-pencil"
+						title="Editar Produto">
+						<f:param name="id" value="#{produto.id}" />
+					</p:button>
+					<p:spacer width="10" />
+					<p:commandButton
+						onclick="return confirm('Tem certeza que deseja excluir?')"
+						icon="ui-icon-trash" title="Excluir Produto" ajax="true"
+						update=":frmTabela" action="#{produtoMB.excluir}">
+						<f:setPropertyActionListener target="#{produtoMB.id}"
+							value="#{produto.id}" />
+					</p:commandButton>
+					<p:commandButton
+						onclick="return confirm('Tem certeza que deseja adicionar ao carrinho?')"
+						icon="ui-icon-cart" title="add carrinho" ajax="true"
+						update="@form" action="#{carrinhoCompraMB.put}">
+						<f:setPropertyActionListener
+							target="#{carrinhoCompraMB.produto}" value="#{produto}" />
+					</p:commandButton>
 				</p:column>
 			</p:dataTable>
 		</h:form>

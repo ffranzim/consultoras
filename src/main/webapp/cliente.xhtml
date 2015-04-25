@@ -1,0 +1,41 @@
+<ui:composition template="WEB-INF/layout/layoutPadrao.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:define name="corpo">
+		<h:form>
+			<p:button outcome="clienteFormulario.xhtml" value="Novo Cliente" />
+		</h:form>
+
+		<h:form id="frmTabela">
+			<p:dataTable id="tabela" value="#{clienteMB.clientes}" var="cliente">
+				<p:column>
+					<f:facet name="header">Nome</f:facet>
+					#{cliente.nome}  
+			    </p:column>
+				<p:column>
+					<f:facet name="header">Celular</f:facet>
+					#{cliente.celular}  
+			    </p:column>
+				<p:column>
+					<f:facet name="header">Email</f:facet>
+					#{cliente.email}  
+			    </p:column>
+				<p:column>
+					<f:facet name="header">Endereco</f:facet>
+					#{cliente.endereco}  
+			    </p:column>
+				<p:column>
+					<f:facet name="header">Acoes</f:facet>
+					<p:button outcome="clienteFormulario.xhtml" icon="ui-icon-cart"
+						title="Editar Cliente">
+						<f:param name="id" value="#{cliente.id}" />
+					</p:button>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>

@@ -2,8 +2,6 @@ package br.com.franzim.consultora.dao;
 
 import java.util.List;
 
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
@@ -25,5 +23,17 @@ public class ProdutoDAO {
 		em.persist(produto);
 		tx.commit();
 	}
-
+	
+	public void excluir(Produto produto) {
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		em.remove(produto);
+		tx.commit();
+	}
+	
+	public Produto findById(Long pk) throws Throwable{
+		EntityManager em = JpaUtil.getEntityManager();
+		Produto produto = em.find(Produto.class, pk);
+		return produto;
+	}
 }

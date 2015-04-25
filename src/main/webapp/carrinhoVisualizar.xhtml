@@ -1,0 +1,74 @@
+<ui:composition template="WEB-INF/layout/layoutPadrao.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+	<ui:define name="corpo">
+
+		<h:form>
+			<h1>Carrinho</h1>
+			<h:outputText value="Valor Total da Compra: " />
+			<h:outputText value="#{carrinhoCompraMB.valorTotal}" />
+			<p:growl id="msgs" showDetail="true" />
+
+			<p:dataTable id="carrinhoItem" var="produto"
+				value="#{carrinhoCompraMB.listItemCarrinho}" editable="true"
+				style="margin-bottom:20px">
+				<f:facet name="header">Itens do Carrinho</f:facet>
+
+				<p:column headerText="id">
+					<h:outputText value="#{produto.key}" />
+				</p:column>
+
+				<p:column headerText="nome">
+					<h:outputText value="#{produto.value.produto.nome}" />
+				</p:column>
+
+				<p:column headerText="valor unitario">
+					<h:outputText value="#{produto.value.produto.valor}" />
+				</p:column>
+
+				<p:column headerText="valor total">
+					<h:outputText value="#{produto.value.valorTotal}" />
+				</p:column>
+
+				<p:column headerText="quandidade">
+					<h:outputText value="#{produto.value.quantidade}" />
+				</p:column>
+
+				<p:column headerText="Acoes">
+					<p:commandButton icon="ui-icon-plus"
+						title="Inserir mais um Produto" ajax="true" update="@form"
+						action="#{carrinhoCompraMB.put}">
+						<f:setPropertyActionListener
+							target="#{carrinhoCompraMB.produto.id}"
+							value="#{produto.value.produto.id}" />
+					</p:commandButton>
+					<p:spacer width="10" />
+					<p:commandButton icon="ui-icon-minus" title="Remover um Produto"
+						ajax="true" update="@form"
+						action="#{carrinhoCompraMB.remove}">
+						<f:setPropertyActionListener
+							target="#{carrinhoCompraMB.produto.id}"
+							value="#{produto.value.produto.id}" />
+					</p:commandButton>
+					<p:spacer width="10" />
+					<p:commandButton icon="ui-icon-trash" title="Remover Item"
+						ajax="true" update="@form"
+						action="#{carrinhoCompraMB.removeItem}">
+						<f:setPropertyActionListener
+							target="#{carrinhoCompraMB.produto.id}"
+							value="#{produto.value.produto.id}" />
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+			<p:commandButton ajax="true" value="Concluir Encomenda"
+				update="@form" action="#{carrinhoCompraMB.salvaEncomenda}">
+
+			</p:commandButton>
+		</h:form>
+	</ui:define>
+</ui:composition>

@@ -20,10 +20,11 @@ import br.com.franzim.consultora.entity.Produto;
 public class ProdutoMB {
 	
 	
-	ProdutoDAO dao = new ProdutoDAO();
+	private ProdutoDAO dao = new ProdutoDAO();
 	
-	Produto produto = new Produto();
-	Marca marca = new Marca();
+	private Produto produto = new Produto();
+	private Marca marca = new Marca();
+	private Long id;
 	
 	@Setter(value = AccessLevel.NONE)
 	List<Produto> produtos;	
@@ -40,5 +41,13 @@ public class ProdutoMB {
 		dao.salvar(produto);
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Produto salvo com sucesso!", null));
 	}
+	
+	public void excluir() {
+		dao.excluir(produto);
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Produto excluido com sucesso!", null));
+	}
 
+	public void findById() throws Throwable{
+		produto = dao.findById(id);
+	}
 }
