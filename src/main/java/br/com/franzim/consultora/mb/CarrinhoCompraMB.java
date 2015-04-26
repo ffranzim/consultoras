@@ -7,6 +7,7 @@ import java.util.Map.Entry;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 import lombok.Data;
 import br.com.franzim.consultora.entity.CarrinhoCompra;
@@ -15,6 +16,7 @@ import br.com.franzim.consultora.entity.Produto;
 
 @Data
 @ManagedBean
+@SessionScoped
 public class CarrinhoCompraMB {
 
 	private CarrinhoCompra carrinho;

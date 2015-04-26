@@ -7,9 +7,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
-import lombok.AccessLevel;
 import lombok.Data;
-import lombok.Setter;
 import br.com.franzim.consultora.dao.ProdutoDAO;
 import br.com.franzim.consultora.entity.Categoria;
 import br.com.franzim.consultora.entity.Marca;
@@ -26,10 +24,8 @@ public class ProdutoMB {
 	private Marca marca = new Marca();
 	private Long id;
 	
-	@Setter(value = AccessLevel.NONE)
 	List<Produto> produtos;	
 	
-	@Setter(value = AccessLevel.NONE)
 	List<Categoria> categorias;
 
 	@PostConstruct
