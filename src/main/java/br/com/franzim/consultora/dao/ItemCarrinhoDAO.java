@@ -12,28 +12,15 @@ public class ItemCarrinhoDAO {
 
 	EntityManager em = JpaUtil.getEntityManager();
 
-	public List<ItemCarrinho> getItens() {
-		return em.createNamedQuery("ItemCarrinho.listarTodos",
-				ItemCarrinho.class).getResultList();
+	public List<ItemCarrinho> getItemCarrinho() {
+		return em.createNamedQuery("ItemCarrinho.listarTodos", ItemCarrinho.class)
+				.getResultList();
 	}
 
-	public void salvar(ItemCarrinho item) {
+	public void salvar(ItemCarrinho itemCarrinho) {
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-		em.persist(item);
+		em.persist(itemCarrinho);
 		tx.commit();
-	}
-
-	public void excluir(ItemCarrinho item) {
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
-		em.remove(item);
-		tx.commit();
-	}
-
-	public ItemCarrinho findById(Long pk) throws Throwable {
-		EntityManager em = JpaUtil.getEntityManager();
-		ItemCarrinho item = em.find(ItemCarrinho.class, pk);
-		return item;
 	}
 }

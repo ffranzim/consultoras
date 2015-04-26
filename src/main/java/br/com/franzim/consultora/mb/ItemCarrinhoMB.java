@@ -11,40 +11,25 @@ import lombok.Data;
 import br.com.franzim.consultora.dao.ItemCarrinhoDAO;
 import br.com.franzim.consultora.entity.ItemCarrinho;
 
-@Data
 @ManagedBean
+@Data
 public class ItemCarrinhoMB {
 
 	private ItemCarrinhoDAO dao = new ItemCarrinhoDAO();
-
-	private ItemCarrinho item = new ItemCarrinho();
+	private ItemCarrinho itemCarrinho = new ItemCarrinho();
 
 	private List<ItemCarrinho> itens;
 
 	@PostConstruct
-	public void buscaTodos() {
-		itens = dao.getItens();
+	public void carregaMarcas() {
+		itens = dao.getItemCarrinho();
 	}
 
-	public void excluir() {
-		if (item != null) {
-			itens.remove(item);
-			FacesContext.getCurrentInstance().addMessage(
-					null,
-					new FacesMessage(FacesMessage.SEVERITY_INFO,
-							"Item excluido com sucesso!", null));
-			buscaTodos();
-		}
-	}
-	
-	public void adicionar(){
-		if(item != null){
-			itens.add(item);
-			FacesContext.getCurrentInstance().addMessage(
-					null,
-					new FacesMessage(FacesMessage.SEVERITY_INFO,
-							"Item adicionado com sucesso!", null));
-			buscaTodos();
-		}
+	public void salvar() {
+		dao.salvar(itemCarrinho);
+		FacesContext.getCurrentInstance().addMessage(
+				null,
+				new FacesMessage(FacesMessage.SEVERITY_INFO,
+						"Item salvo com sucesso!", null));
 	}
 }

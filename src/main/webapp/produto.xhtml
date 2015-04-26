@@ -6,6 +6,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 	<ui:define name="corpo">
+		<p:messages id="messages" />
 		<h:form>
 			<p:button outcome="produtoFormulario.xhtml" value="Novo Produto" />
 		</h:form>
@@ -58,8 +59,8 @@
 						onclick="return confirm('Tem certeza que deseja excluir?')"
 						icon="ui-icon-trash" title="Excluir Produto" ajax="true"
 						update=":frmTabela" action="#{produtoMB.excluir}">
-						<f:setPropertyActionListener target="#{produtoMB.id}"
-							value="#{produto.id}" />
+						<f:setPropertyActionListener target="#{produtoMB.produto}"
+							value="#{produto}" />
 					</p:commandButton>
 					<p:commandButton
 						onclick="return confirm('Tem certeza que deseja adicionar ao carrinho?')"
