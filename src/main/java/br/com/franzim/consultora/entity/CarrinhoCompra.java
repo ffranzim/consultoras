@@ -6,6 +6,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 public class CarrinhoCompra {
+	private boolean confirmação = false;
 	private Map<Long, ItemCarrinho> itens;
 	
 	public CarrinhoCompra() {
@@ -44,5 +45,14 @@ public class CarrinhoCompra {
 	public Map<Long, ItemCarrinho> getItens() {
 		return itens;
 	}
+
+	public boolean getConfirmação() {
+		return confirmação;
+	}
+
+	public void setConfirmação(boolean confirmação) {
+		this.confirmação = confirmação;
+	}
+	
 
 }

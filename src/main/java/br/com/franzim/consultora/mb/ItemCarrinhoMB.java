@@ -21,7 +21,7 @@ public class ItemCarrinhoMB {
 	private List<ItemCarrinho> itens;
 
 	@PostConstruct
-	public void carregaMarcas() {
+	public void carregaItemCarrinho() {
 		itens = dao.getItemCarrinho();
 	}
 

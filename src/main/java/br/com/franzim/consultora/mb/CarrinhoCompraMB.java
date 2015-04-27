@@ -21,7 +21,7 @@ public class CarrinhoCompraMB {
 
 	private CarrinhoCompra carrinho;
 	private Produto produto;
-
+	
 	@PostConstruct
 	private void init() {
 		carrinho = new CarrinhoCompra();
